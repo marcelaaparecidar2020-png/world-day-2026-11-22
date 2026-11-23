@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/news-image-20261122/marcelaaparecidar2020-png/world-day-2026-11-22/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 [![reward](https://make.fun/badge/news-image-20261122/marcelaaparecidar2020-png/world-day-2026-11-22/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 
-One front page for Sunday 22 November 2026: five lead stories and fifteen briefs across six regions, each checked against the day's reporting, with verification labels, sources and a date check. The page is drawn in HTML/SVG (`design/page.html`), rendered once to `entry.png` (`tools/render.mjs`), and `main.ts` copies it to the output.
+One front page for Sunday 22 November 2026: 22 stories across six regions — five leads, seven second-tier stories and ten briefs — each confirmed by two outlets, with UTC times, sources and a date check. The page is drawn in HTML/SVG (`design/page.html`), rendered once to `entry.png` (`tools/render.mjs`), and `main.ts` copies it to the output.
 
 ## Run it
 
