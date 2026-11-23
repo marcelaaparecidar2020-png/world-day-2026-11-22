@@ -6,132 +6,197 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1024px; height: 1024px; overflow: hidden; }
-  body { background: #f6f1e6; color: #16181d; font-family: "Segoe UI", Arial, sans-serif; position: relative; }
-  .serif { font-family: Georgia, serif; }
+  body { background: #f4efe3; color: #15171c; font-family: "Segoe UI", Arial, sans-serif; position: relative; }
+  .g { font-family: Georgia, serif; }
+  .eu { --c: #1d4e89; } .me { --c: #a4161a; } .as { --c: #b5651d; }
+  .am { --c: #6a3d9a; } .af { --c: #2d6a4f; } .oc { --c: #0f766e; } .wd { --c: #3a3d44; }
 
-  .topbar { height: 22px; background: #14213d; color: #f6f1e6; display: flex; align-items: center;
-    justify-content: space-between; padding: 0 16px; font-size: 11.5px; font-weight: 700; letter-spacing: .1em; }
-  .date { text-align: center; font-family: Georgia, serif; font-weight: 700; font-size: 72px; line-height: 76px;
-    white-space: nowrap; color: #14213d; }
-  .utc { margin: 2px 16px 0; background: #14213d; color: #f6f1e6; display: flex; gap: 18px; align-items: center;
-    padding: 4px 10px; font-size: 13px; font-weight: 600; white-space: nowrap; }
-  .utc b { color: #f4d35e; margin-right: 5px; }
-  .utc .lab { letter-spacing: .12em; color: #9fb3d1; font-weight: 800; font-size: 12px; }
+  .top { height: 22px; background: #14213d; color: #f4efe3; display: flex; justify-content: space-between; align-items: center;
+    padding: 0 14px; font-size: 11.5px; font-weight: 700; letter-spacing: .1em; }
+  .date { text-align: center; font-family: Georgia, serif; font-weight: 700; color: #14213d; white-space: nowrap;
+    font-size: 70px; line-height: 72px; }
+  .utc { margin: 0 14px; background: #14213d; color: #f4efe3; display: flex; gap: 16px; padding: 3px 10px;
+    font-size: 12.5px; font-weight: 600; white-space: nowrap; }
+  .utc .l { color: #9fb3d1; letter-spacing: .12em; font-weight: 800; font-size: 11.5px; }
+  .utc b { color: #f4d35e; margin-right: 4px; }
 
-  /* lead stories */
-  .leads { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin: 10px 16px 0; }
-  .lead { grid-column: span 2; background: #fffdf7; border: 1px solid #d8cfbb; border-top: 6px solid currentColor;
-    padding: 8px 10px 8px; display: flex; gap: 10px; }
-  .lead.w { grid-column: span 3; }
-  .ico { flex: none; width: 46px; height: 46px; }
-  .lead .t { flex: 1; min-width: 0; }
-  .kick { font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-  .lead h2 { font-family: Georgia, serif; font-size: 27px; line-height: 30px; color: #16181d; margin-top: 2px; }
-  .lead p { font-size: 14.5px; line-height: 18px; color: #2b2e35; margin-top: 4px; }
-  .src { font-size: 10.5px; color: #6b6f78; margin-top: 3px; }
+  .row { display: grid; gap: 8px; margin: 7px 14px 0; }
+  .card { background: #fffdf8; border: 1px solid #d6ccb6; position: relative; overflow: hidden; }
+  .card svg.art { display: block; width: 100%; }
+  .n { position: absolute; top: 5px; left: 5px; min-width: 20px; height: 20px; border-radius: 10px; background: #14213d; color: #fff;
+    font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+  .badge { position: absolute; top: 5px; right: 5px; font-size: 10px; font-weight: 800; letter-spacing: .06em; color: #fff;
+    padding: 2px 5px; border-radius: 2px; background: #2d6a4f; }
+  .badge.claim { background: #b5651d; }
+  .txt { padding: 5px 9px 7px; }
+  .k { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--c); }
+  .card h2 { font-family: Georgia, serif; line-height: 1.08; margin-top: 2px; }
+  .card p { font-size: 13.5px; line-height: 17px; color: #2b2e35; margin-top: 3px; }
+  .s { font-size: 10px; color: #6b6f78; margin-top: 2px; }
+  .lead { border-top: 5px solid var(--c); }
+  .lead h2 { font-size: 25px; }
+  .mod { border-top: 4px solid var(--c); }
+  .mod h2 { font-size: 17px; }
+  .side .badge { right: auto; left: 5px; top: 30px; }
 
-  .eu { color: #1d4e89; } .me { color: #a4161a; } .as { color: #b5651d; }
-  .am { color: #6a3d9a; } .af { color: #2d6a4f; } .wd { color: #3a3d44; }
+  .ind { display: grid; grid-template-columns: repeat(6, 1fr); margin: 7px 14px 0; background: #14213d; color: #f4efe3; }
+  .ind div { text-align: center; padding: 3px 2px 4px; border-right: 1px solid #2c3b5e; }
+  .ind div:last-child { border-right: 0; }
+  .ind b { display: block; font-family: Georgia, serif; font-size: 22px; line-height: 24px; color: #f4d35e; }
+  .ind span { font-size: 10.5px; font-weight: 600; }
 
-  .sec { margin: 10px 16px 0; border-top: 3px solid #14213d; padding-top: 3px; font-family: Georgia, serif;
-    font-weight: 700; font-size: 17px; }
-  .sec span { font-family: "Segoe UI", Arial, sans-serif; font-weight: 600; font-size: 11.5px; color: #3a3d44; margin-left: 8px; }
-
-  /* second tier */
-  .mid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 10px; margin: 5px 16px 0; }
-  .m { background: #fffdf7; border-left: 5px solid currentColor; padding: 4px 8px 5px; }
-  .m b { display: block; font-family: Georgia, serif; font-size: 20px; line-height: 23px; color: #16181d; margin-top: 1px; }
-  .m em { display: block; font-style: normal; font-size: 10.5px; color: #6b6f78; margin-top: 2px; }
-  .check { background: #fff6f2; border: 2px solid #a4161a; padding: 4px 8px; font-size: 11.5px; line-height: 14.5px; color: #2b2e35; }
-  .check b.t { display: block; color: #a4161a; font-size: 11px; letter-spacing: .08em; }
-
-  /* briefs */
-  .briefs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; margin: 5px 16px 0; }
-  .bf { display: flex; align-items: baseline; gap: 8px; border-bottom: 1px dotted #c9bfa9; padding: 4px 0 5px; }
-  .bf i { flex: none; width: 72px; font-style: normal; font-weight: 800; font-size: 10.5px; letter-spacing: .05em; }
-  .bf span { flex: 1; }
-  .bf b { font-family: Georgia, serif; font-size: 17px; line-height: 21px; }
-  .bf em { font-style: normal; font-size: 10.5px; color: #6b6f78; white-space: nowrap; }
-
-  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: #14213d; color: #f6f1e6;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 10.5px; font-weight: 600; }
-  .foot .k { padding: 1px 5px; border-radius: 2px; font-weight: 800; font-size: 9.5px; color: #fff; background: #2d6a4f; }
+  .notes { display: grid; gap: 0 14px; }
+  .nt { display: flex; gap: 6px; align-items: flex-start; border-bottom: 1px dotted #c3b89f; padding: 3px 0 3px; }
+  .nt i { flex: none; font-style: normal; font-size: 10px; font-weight: 800; color: #fff; background: var(--c);
+    border-radius: 8px; min-width: 18px; text-align: center; padding: 0 3px; margin-top: 3px; }
+  .nt b { display: block; font-family: Georgia, serif; font-size: 15px; line-height: 18px; }
+  .nt em { display: block; font-style: normal; font-size: 9.5px; line-height: 12px; color: #6b6f78; white-space: nowrap; }
+  .map { background: #dfe9ee; border: 1px solid #c4d3da; position: relative; }
+  .map .cap { position: absolute; left: 6px; top: 4px; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: #14213d; }
+  .check { margin: 6px 14px 0; border: 2px solid #a4161a; background: #fff5f1; padding: 3px 9px; font-size: 11px; line-height: 14px; }
+  .check b { color: #a4161a; letter-spacing: .07em; margin-right: 5px; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 20px; background: #14213d; color: #f4efe3; display: flex;
+    justify-content: space-between; align-items: center; padding: 0 14px; font-size: 10px; font-weight: 600; }
+  .foot .bd { background: #2d6a4f; padding: 0 4px; border-radius: 2px; font-weight: 800; }
+  .foot .bd.claim { background: #b5651d; }
 </style>
 </head>
 <body>
-  <div class="topbar"><span>THE WORLD IN ONE DAY</span><span>22 STORIES · 6 REGIONS · ALL FROM SUNDAY 22 NOV 2026 · TWO SOURCES EACH</span></div>
+<script>
+// Every story below was checked against two outlets for Sunday 22 November 2026 (UTC); see the commit history.
+const LEADS = [
+  { r: 'wd', k: 'Climate · Antalya, Türkiye', h: 'COP31 collapses without a deal', d: 'First failure since 2009: EU, Panama, Marshall Is. and Norway reject a text without fossil fuels', s: 'CNN · CBS · NPR', art: 'cop', at: [30.7, 36.9] },
+  { r: 'eu', k: 'War · Kyiv region, Ukraine', h: 'Russian drones hit Dymer block', d: '186 drones, 161 downed (air force); 3 dead by 17:09 UTC', s: 'Ukrainian Air Force · Ukrinform', art: 'drones', at: [30.3, 50.8] },
+  { r: 'af', k: 'War at sea · Benghazi, Libya', h: 'Russian warship sunk in Libya', d: 'Corvette Merkury capsizes after pre-dawn drone attack', s: 'CNN · NBC News · CBC · AP', art: 'ship', at: [20.1, 32.1] },
+];
+const MODS = [
+  { r: 'as', k: 'Hong Kong', h: 'Election Committee turnout tops 98%', s: 'The Standard · LegCo', art: 'ballot', at: [114.2, 22.3] },
+  { r: 'eu', k: 'Tennis · Turin', h: 'Alcaraz beats No. 1 Zverev for ATP Finals', s: 'ATP Tour · Sky Sports', art: 'tennis', at: [7.7, 45.1] },
+  { r: 'me', k: 'Israel', h: 'Netanyahu–Eisenkot coalition talks end, no deal', s: 'Haaretz · Japan Times', art: 'talks', at: [34.8, 32.2] },
+  { r: 'me', k: 'West Bank', h: "Sa'ar, Eisenkot condemn settler arson", s: 'AP · The New Arab', art: 'arson', at: [35.2, 31.9] },
+  { r: 'me', k: 'Iran', h: 'Rolling power cuts begin', s: 'RFE/RL · Shafaq News', art: 'power', at: [51.4, 35.7] },
+  { r: 'me', k: 'Saudi Arabia', h: 'Houthis claim hit on Rabigh refinery', s: 'CNBC · Jerusalem Post', art: 'refinery', claim: true, at: [39.0, 22.8] },
+  { r: 'am', k: 'Colombia', h: 'Ministry asks X to suspend ex-president Petro', s: 'El Tiempo · CNN en Español', art: 'phone', at: [-74.1, 4.7] },
+  { r: 'as', k: 'South Korea', h: 'Education minister quits over AI cheating', s: 'France 24 · JoongAng', art: 'exam', at: [127.0, 37.6] },
+];
+const NOTES = [
+  { r: 'as', k: 'NEPAL·INDIA', h: 'Nepal PM Shah arrives in Delhi', s: 'Outlook · Open', at: [77.2, 28.6] },
+  { r: 'oc', k: 'AUSTRALIA', h: 'Marles: US budget office wrong on AUKUS', s: 'Reuters · Japan Times', at: [149.1, -35.3] },
+  { r: 'as', k: 'JAPAN', h: 'Shuri Castle hall restored after 2019 fire', s: 'Japan Times · AP', at: [127.7, 26.2] },
+  { r: 'af', k: 'S. AFRICA', h: 'Level 4 storm alert in KwaZulu-Natal', s: 'IOL · ANA', at: [31.0, -29.9] },
+  { r: 'wd', k: 'VATICAN', h: 'Pope lunches with 1,300 poor guests', s: 'Vatican News · CathNews', at: [12.5, 41.9] },
+  { r: 'am', k: 'F1', h: 'Verstappen wins Las Vegas GP', s: 'F1 · Yahoo · Sat night local', at: [-115.2, 36.2] },
+  { r: 'eu', k: 'FOOTBALL', h: 'Liverpool 4-0 Man Utd', s: 'ESPN · LFC', at: [-3.0, 53.4] },
+  { r: 'am', k: 'NFL', h: '49ers beat Vikings 35-10 in Mexico City', s: 'ESPN · AP', at: [-99.1, 19.4] },
+  { r: 'oc', k: 'CRICKET', h: "India's record 720/9 in Wellington", s: 'AFP · Outlook', at: [174.8, -41.3] },
+  { r: 'as', k: 'BADMINTON', h: "Malaysians win HK Open men's doubles", s: 'Bernama · The Star', at: null },
+  { r: 'am', k: 'SPACE', h: 'SpaceX launches NROL-136 spy satellite', s: 'NRO · KEYT', at: [-120.6, 34.7] },
+  { r: 'wd', k: 'MARKETS', h: 'Bitcoin back above $60,000', s: 'Yahoo Finance · crypto.news', at: null },
+];
+const IND = [['186', 'drones at Ukraine'], ['98%+', 'HK poll turnout'], ['720/9', "India's record total"], ['1,300', "guests at Pope's lunch"], ['0.639s', 'Verstappen margin'], ['$60k', 'Bitcoin back above']];
+const UTC = [['~01:00', 'Blasts hit Russian corvette, Benghazi'], ['10:00', 'Hong Kong polls close'], ['12:23', 'SpaceX launches NROL-136'], ['17:09', 'Dymer toll: 3 dead']];
+const CHECK = 'Sat 21: Iran strike on Bahrain site · "El Chapo Isidro" arrest · Indonesia factory fire &nbsp;|&nbsp; Fri 20: Kryvyi Rih strike · Nigeria boat capsizing &nbsp;|&nbsp; Thu 19: Somalia expels UAE envoy';
+
+// Small scenes, drawn on a 160x90 canvas.
+const ART = {
+  cop: `<rect width="160" height="90" fill="#cfe3ec"/><circle cx="80" cy="44" r="28" fill="#4f8fb0"/><path d="M62 34q10-8 20-2q4 7-4 10q-7 2-5 10q-10 0-11-8z M86 26q11 0 14 8q-2 8-9 5q-8-2-5-13z" fill="#7bb36a"/><rect x="10" y="74" width="140" height="16" fill="#6f5638"/><path d="M110 18 l28 28 M138 18 l-28 28" stroke="#a4161a" stroke-width="7" stroke-linecap="round"/><text x="34" y="30" font-family="Georgia" font-weight="700" font-size="15" fill="#a4161a" text-anchor="middle">NO</text><text x="34" y="48" font-family="Georgia" font-weight="700" font-size="15" fill="#a4161a" text-anchor="middle">DEAL</text>`,
+  drones: `<rect width="160" height="90" fill="#0f1a33"/><g fill="#f4d35e"><path d="M18 14l14 5-14 5 4-5z"/><path d="M52 8l14 5-14 5 4-5z"/><path d="M122 12l14 5-14 5 4-5z"/></g><path d="M50 90v-48h64v48z" fill="#3a4766"/><g fill="#f4d35e"><rect x="58" y="50" width="8" height="7"/><rect x="58" y="64" width="8" height="7"/><rect x="58" y="78" width="8" height="7"/><rect x="74" y="64" width="8" height="7"/></g><path d="M114 42l-22 0 8 12-10 7 13 9-5 20h16z" fill="#0f1a33"/><path d="M86 40q6-12 15-5q4-10 12-3" stroke="#e76f51" stroke-width="5" fill="none"/>`,
+  ship: `<rect width="160" height="90" fill="#f3dfc1"/><rect y="0" width="160" height="30" fill="#f3dfc1"/><path d="M0 30h46v-8h14v8h20v16H0z" fill="#c9b79c"/><rect y="46" width="160" height="44" fill="#3d7ea6"/><g transform="translate(96 52) rotate(24)"><path d="M-44 0h88l-9 11h-70z" fill="#4a5568"/><rect x="-14" y="-11" width="24" height="11" fill="#8d99ae"/><rect x="-4" y="-21" width="4" height="10" fill="#8d99ae"/></g><rect y="62" width="160" height="28" fill="#3d7ea6"/><path d="M108 36q-6-12 4-18q-2 10 8 12" fill="#9aa5b1"/>`,
+  ballot: `<rect width="160" height="90" fill="#fbe3d0"/><rect x="40" y="40" width="80" height="44" fill="#14213d"/><rect x="66" y="38" width="28" height="5" fill="#f4efe3"/><path d="M68 10h24v30h-24z" fill="#fff" stroke="#14213d" stroke-width="2"/><path d="M72 25l5 6 10-13" stroke="#a4161a" stroke-width="4" fill="none"/><text x="80" y="70" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="19" fill="#f4d35e">98%</text>`,
+  tennis: `<rect width="160" height="90" fill="#2a4d8f"/><rect y="58" width="160" height="32" fill="#1f3c73"/><line x1="0" y1="58" x2="160" y2="58" stroke="#fff" stroke-width="2"/><g transform="translate(58 40) rotate(-30)"><ellipse cx="0" cy="-9" rx="13" ry="17" fill="none" stroke="#fff" stroke-width="4"/><rect x="-3" y="8" width="6" height="22" fill="#fff"/></g><circle cx="94" cy="20" r="7" fill="#d9f04c"/><path d="M110 50h26l-4 14h-18z M118 64h10v8h-10z M112 72h22v5h-22z" fill="#f4d35e"/>`,
+  talks: `<rect width="160" height="90" fill="#e9e4f5"/><rect x="30" y="52" width="100" height="10" fill="#6f5638"/><rect x="36" y="62" width="6" height="22" fill="#6f5638"/><rect x="118" y="62" width="6" height="22" fill="#6f5638"/><circle cx="44" cy="30" r="10" fill="#1d4e89"/><rect x="34" y="40" width="20" height="14" fill="#1d4e89"/><circle cx="116" cy="30" r="10" fill="#a4161a"/><rect x="106" y="40" width="20" height="14" fill="#a4161a"/><path d="M62 30h12m12 0h12" stroke="#15171c" stroke-width="3" stroke-dasharray="4 4"/><path d="M76 22l8 16" stroke="#a4161a" stroke-width="4"/>`,
+  arson: `<rect width="160" height="90" fill="#f6e7c8"/><rect y="70" width="160" height="20" fill="#cdb78f"/><path d="M40 70h72l-6-16h-50z" fill="#3a3d44"/><circle cx="56" cy="72" r="7" fill="#15171c"/><circle cx="98" cy="72" r="7" fill="#15171c"/><path d="M60 54q-6-20 10-30q-2 14 10 18q4-16 16-22q-4 20 8 34z" fill="#e76f51"/><path d="M72 54q-2-12 8-18q2 10 8 18z" fill="#f4d35e"/><circle cx="136" cy="44" r="14" fill="#7a8b4a"/><rect x="134" y="56" width="4" height="14" fill="#6f5638"/>`,
+  power: `<rect width="160" height="90" fill="#1b2235"/><g fill="#2f3a55"><rect x="14" y="48" width="34" height="42"/><rect x="56" y="38" width="40" height="52"/><rect x="104" y="52" width="42" height="38"/></g><circle cx="80" cy="22" r="12" fill="#5c677d"/><rect x="74" y="32" width="12" height="8" fill="#8d99ae"/><path d="M62 8l36 36" stroke="#e63946" stroke-width="5" stroke-linecap="round"/>`,
+  refinery: `<rect width="160" height="90" fill="#f3dfc1"/><rect y="74" width="160" height="16" fill="#c9b79c"/><g fill="#5c677d"><rect x="30" y="34" width="12" height="40"/><rect x="50" y="22" width="10" height="52"/><rect x="70" y="44" width="40" height="30" rx="14"/></g><path d="M55 22q-6-12 4-18q-1 9 6 12z" fill="#e76f51"/><path d="M118 20l14 5-14 5 4-5z" fill="#15171c"/><text x="138" y="62" font-family="Georgia" font-weight="700" font-size="30" fill="#b5651d">?</text>`,
+  phone: `<rect width="160" height="90" fill="#efe6f6"/><rect x="58" y="8" width="44" height="76" rx="7" fill="#15171c"/><rect x="62" y="16" width="36" height="58" fill="#fff"/><path d="M70 30l20 24M90 30l-20 24" stroke="#15171c" stroke-width="5"/><circle cx="122" cy="42" r="16" fill="#a4161a"/><rect x="112" y="39" width="20" height="6" fill="#fff"/>`,
+  exam: `<rect width="160" height="90" fill="#fdf0d5"/><g transform="rotate(-6 70 46)"><rect x="34" y="10" width="64" height="74" fill="#fff" stroke="#c3b89f"/><g stroke="#c3b89f" stroke-width="3"><line x1="42" y1="26" x2="90" y2="26"/><line x1="42" y1="38" x2="90" y2="38"/><line x1="42" y1="50" x2="84" y2="50"/><line x1="42" y1="62" x2="88" y2="62"/></g></g><rect x="104" y="24" width="36" height="36" rx="4" fill="#1d4e89"/><text x="122" y="48" text-anchor="middle" font-family="Arial" font-weight="700" font-size="15" fill="#fff">AI</text><path d="M100 70l44-44" stroke="#a4161a" stroke-width="5"/>`,
+};
+
+// Rough continent outlines (longitude, latitude), equirectangular.
+const LAND = [
+  [[-168,65],[-140,70],[-95,72],[-80,63],[-60,55],[-53,47],[-67,44],[-75,35],[-81,25],[-97,26],[-97,17],[-88,15],[-80,8],[-90,15],[-105,20],[-117,32],[-124,40],[-125,49],[-135,58],[-150,60],[-165,61]],
+  [[-45,60],[-20,70],[-25,82],[-60,82],[-70,76],[-55,68]],
+  [[-80,9],[-72,12],[-60,10],[-50,0],[-35,-6],[-39,-15],[-48,-25],[-58,-35],[-65,-42],[-68,-55],[-75,-50],[-73,-38],[-71,-18],[-81,-5]],
+  [[-10,36],[-9,43],[-2,44],[-5,48],[2,51],[8,54],[10,58],[5,62],[15,69],[28,71],[40,67],[40,55],[30,46],[28,41],[22,37],[12,38],[8,44],[3,43]],
+  [[-5,50],[1,51],[-2,56],[-5,58],[-6,55]],
+  [[-17,15],[-17,21],[-10,30],[-5,36],[10,37],[20,32],[32,31],[35,28],[43,12],[51,12],[40,-3],[40,-15],[33,-26],[20,-35],[17,-29],[12,-17],[13,-6],[9,4],[-8,4],[-14,9]],
+  [[44,-25],[49,-15],[50,-13],[47,-25]],
+  [[28,41],[40,55],[40,67],[60,70],[80,73],[110,77],[140,72],[170,69],[180,66],[160,60],[142,53],[135,43],[122,40],[121,31],[110,20],[106,10],[100,13],[98,8],[93,20],[88,22],[80,15],[77,8],[72,20],[66,25],[57,26],[52,17],[43,12],[35,28],[35,36]],
+  [[130,31],[141,36],[142,44],[140,41],[135,34]],
+  [[95,5],[105,-6],[115,-8],[120,-9],[110,-3],[100,1]],
+  [[109,1],[117,7],[119,1],[115,-4],[110,-3]],
+  [[114,-22],[122,-18],[131,-12],[137,-12],[142,-11],[146,-19],[153,-28],[150,-37],[141,-38],[131,-31],[115,-34]],
+  [[172,-34],[178,-38],[175,-41],[168,-46],[172,-41]],
+];
+
+const all = [...LEADS, ...MODS, ...NOTES];
+all.forEach((x, i) => (x.no = i + 1));
+
+// Scenes keep their whole picture ("meet"); the band behind them takes the scene's own sky colour.
+function art(name, h) {
+  const bg = ART[name].match(/fill="([^"]+)"/)[1];
+  return `<svg class="art" viewBox="0 0 160 90" preserveAspectRatio="xMidYMid meet" style="height:${h}px;background:${bg}">${ART[name]}</svg>`;
+}
+function badge(x) { return x.claim ? '<span class="badge claim">CLAIM</span>' : '<span class="badge">REPORTED</span>'; }
+function lead(x, h, size) {
+  return `<div class="card lead ${x.r}">${art(x.art, h)}<span class="n">${x.no}</span>${badge(x)}<div class="txt"><div class="k">${x.k}</div><h2 style="font-size:${size}px">${x.h}</h2><p>${x.d}</p><div class="s">${x.s}</div></div></div>`;
+}
+function mod(x, h) {
+  return `<div class="card mod ${x.r}">${art(x.art, h)}<span class="n">${x.no}</span>${badge(x)}<div class="txt"><div class="k">${x.k}</div><h2>${x.h}</h2><div class="s">${x.s}</div></div></div>`;
+}
+function notes(cols) {
+  return `<div class="notes" style="grid-template-columns:repeat(${cols},1fr)">` + NOTES.map((x) =>
+    `<div class="nt ${x.r}"><i>${x.no}</i><span><b>${x.h}</b> <em>${x.k} · ${x.s}</em></span></div>`).join('') + '</div>';
+}
+function map(w, h, title) {
+  const px = (lon) => ((lon + 180) / 360) * w, py = (lat) => ((84 - lat) / 144) * h;
+  const land = LAND.map((p) => `<path d="M${p.map(([a, b]) => `${px(a).toFixed(1)} ${py(b).toFixed(1)}`).join('L')}Z" fill="#b9c7a3" stroke="#9fb08a" stroke-width=".6"/>`).join('');
+  const pins = all.filter((x) => x.at).map((x) => {
+    const X = Math.min(px(x.at[0]), w - 9), Y = Math.max(py(x.at[1]), 18);
+    return `<g><circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="7.5" fill="#a4161a" stroke="#fff" stroke-width="1.2"/><text x="${X.toFixed(1)}" y="${(Y + 3.4).toFixed(1)}" text-anchor="middle" font-family="Arial" font-weight="700" font-size="9" fill="#fff">${x.no}</text></g>`;
+  }).join('');
+  return `<div class="map" style="width:${w}px;height:${h}px"><svg width="${w}" height="${h}">${land}${pins}</svg><span class="cap">${title}</span></div>`;
+}
+function ind() { return '<div class="ind">' + IND.map(([a, b]) => `<div><b>${a}</b><span>${b}</span></div>`).join('') + '</div>'; }
+const head = `<div class="top"><span>THE WORLD IN ONE DAY</span><span>${all.length} STORIES · 6 REGIONS · ALL FROM SUNDAY 22 NOV 2026 · TWO SOURCES EACH</span></div>
   <div class="date">Sunday 22 November 2026</div>
-  <div class="utc"><span class="lab">THE DAY IN UTC</span>
-    <span><b>~01:00</b>Blasts hit Russian corvette, Benghazi</span>
-    <span><b>10:00</b>Hong Kong polls close</span>
-    <span><b>12:23</b>SpaceX launches NROL-136</span>
-    <span><b>17:09</b>Dymer toll: 3 dead</span>
-  </div>
+  <div class="utc"><span class="l">THE DAY IN UTC</span>${UTC.map(([t, s]) => `<span><b>${t}</b>${s}</span>`).join('')}</div>`;
+const check = `<div class="check"><b>DATE CHECK · LEFT OUT, EARLIER DAYS</b>${CHECK}</div>`;
+const foot = `<div class="foot"><span><span class="bd">REPORTED</span> two or more outlets on 22 Nov &nbsp; <span class="bd claim">CLAIM</span> one side's account &nbsp;· times UTC · pictures drawn in code</span><span>SUNDAY 22 NOVEMBER 2026</span></div>`;
 
-  <div class="leads">
-    <div class="lead wd">
-      <svg class="ico" viewBox="0 0 46 46"><circle cx="23" cy="23" r="20" fill="#4f8fb0"/><path d="M11 11 L35 35 M35 11 L11 35" stroke="#a4161a" stroke-width="6" stroke-linecap="round"/></svg>
-      <div class="t"><div class="kick">Climate · Antalya, Türkiye</div>
-        <h2>COP31 collapses without a deal</h2>
-        <p>First failure since 2009; EU and others reject text without fossil fuels</p>
-        <div class="src">CNN · CBS · NPR</div></div>
-    </div>
-    <div class="lead eu">
-      <svg class="ico" viewBox="0 0 46 46"><rect width="46" height="46" rx="4" fill="#0f1a33"/><path d="M8 12 l14 5 -14 5 4 -5z M24 6 l14 5 -14 5 4 -5z" fill="#f4d35e"/><path d="M14 46 v-18 h18 v18z" fill="#5c677d"/><path d="M26 28 l6 6 -6 4 6 8" stroke="#0f1a33" stroke-width="3" fill="none"/></svg>
-      <div class="t"><div class="kick">War · Kyiv region, Ukraine</div>
-        <h2>Russian drones hit Dymer block</h2>
-        <p>186 drones, 161 downed; 3 dead by 17:09 UTC</p>
-        <div class="src">Ukrainian Air Force · Ukrinform</div></div>
-    </div>
-    <div class="lead af">
-      <svg class="ico" viewBox="0 0 46 46"><rect width="46" height="46" rx="4" fill="#3d7ea6"/><g transform="translate(23 22) rotate(22)"><path d="M-17 0 h34 l-4 7 h-26z" fill="#2b3550"/><rect x="-6" y="-7" width="10" height="7" fill="#8d99ae"/></g><rect y="30" width="46" height="16" fill="#2f6a8f"/></svg>
-      <div class="t"><div class="kick">War at sea · Benghazi, Libya</div>
-        <h2>Russian warship sunk in Libya</h2>
-        <p>Corvette Merkury capsizes after drone attack</p>
-        <div class="src">CNN · NBC News · CBC · AP</div></div>
-    </div>
-    <div class="lead w as">
-      <svg class="ico" viewBox="0 0 46 46"><rect width="46" height="46" rx="4" fill="#14213d"/><path d="M13 8 h20 v16 h-20z" fill="#fff"/><path d="M16 16 l4 4 8 -9" stroke="#a4161a" stroke-width="3" fill="none"/><rect x="7" y="24" width="32" height="16" fill="#f6f1e6"/></svg>
-      <div class="t"><div class="kick">Politics · Hong Kong</div>
-        <h2>Hong Kong poll turnout tops 98%</h2>
-        <p>Election Committee vote; final count 98.79%</p>
-        <div class="src">The Standard · LegCo</div></div>
-    </div>
-    <div class="lead w eu">
-      <svg class="ico" viewBox="0 0 46 46"><rect width="46" height="46" rx="4" fill="#2a4d8f"/><g transform="translate(19 22) rotate(-30)"><ellipse cx="0" cy="-5" rx="8" ry="10" fill="none" stroke="#fff" stroke-width="3"/><rect x="-2" y="5" width="4" height="14" fill="#fff"/></g><circle cx="35" cy="12" r="5" fill="#d9f04c"/></svg>
-      <div class="t"><div class="kick">Tennis · Turin, Italy</div>
-        <h2>Alcaraz wins ATP Finals</h2>
-        <p>Beats world No. 1 Zverev 6-2, 7-6(7) for first title</p>
-        <div class="src">ATP Tour · Sky Sports · Al Jazeera</div></div>
-    </div>
-  </div>
+const LAYOUTS = {
+  // A: three illustrated leads, indicator bar, eight illustrated modules, map beside the briefs.
+  a() {
+    return head
+      + `<div class="row" style="grid-template-columns:repeat(3,1fr)">${LEADS.map((x) => lead(x, 66, 25)).join('')}</div>`
+      + ind()
+      + `<div class="row" style="grid-template-columns:repeat(4,1fr)">${MODS.map((x) => mod(x, 40)).join('')}</div>`
+      + `<div class="row" style="grid-template-columns:330px 1fr;align-items:start">${map(330, 186, 'WHERE IT HAPPENED · pins = story numbers')}${notes(2)}</div>`
+      + check + foot;
+  },
+  // B: one hero lead with two stacked leads, modules, briefs in three columns, map in the corner.
+  b() {
+    const side = LEADS.slice(1).map((x) => `<div class="card lead side ${x.r}" style="display:flex">${art(x.art, 120).replace('style="height:120px;', 'style="height:auto;width:170px;flex:none;')}<span class="n">${x.no}</span>${badge(x)}<div class="txt"><div class="k">${x.k}</div><h2 style="font-size:23px">${x.h}</h2><p>${x.d}</p><div class="s">${x.s}</div></div></div>`).join('');
+    return head
+      + `<div class="row" style="grid-template-columns:1.15fr 1fr">${lead(LEADS[0], 150, 32)}<div style="display:grid;gap:8px">${side}</div></div>`
+      + `<div class="row" style="grid-template-columns:repeat(4,1fr)">${MODS.map((x) => mod(x, 38)).join('')}</div>`
+      + `<div class="row" style="grid-template-columns:1fr 262px;align-items:start">${notes(2)}<div>${map(262, 104, 'WHERE · pins = story numbers')}`
+      + `<div class="ind" style="margin:4px 0 0;grid-template-columns:1fr 1fr 1fr">${IND.map(([a, b]) => `<div style="padding:2px 1px 3px"><b style="font-size:18px;line-height:20px">${a}</b><span style="font-size:9.5px">${b}</span></div>`).join('')}</div></div></div>`
+      + check + foot;
+  },
+  // C: the map leads, with indicators; then leads, modules and briefs keyed to its pins.
+  c() {
+    return head
+      + `<div class="row" style="grid-template-columns:1fr 230px">${map(756, 168, 'WHERE IT HAPPENED · pins = story numbers')}<div class="ind" style="margin:0;grid-template-columns:1fr 1fr;height:168px">${IND.map(([a, b]) => `<div style="padding-top:6px"><b>${a}</b><span>${b}</span></div>`).join('')}</div></div>`
+      + `<div class="row" style="grid-template-columns:repeat(3,1fr)">${LEADS.map((x) => lead(x, 50, 23)).join('')}</div>`
+      + `<div class="row" style="grid-template-columns:repeat(4,1fr)">${MODS.map((x) => mod(x, 32)).join('')}</div>`
+      + `<div class="row">${notes(3)}</div>`
+      + check + foot;
+  },
+};
 
-  <div class="sec">Also on Sunday 22 November<span>politics and power</span></div>
-  <div class="mid">
-    <div class="m me"><span class="kick">Israel</span><b>Netanyahu–Eisenkot talks end, no deal</b><em>Haaretz · Japan Times</em></div>
-    <div class="m me"><span class="kick">West Bank</span><b>Sa'ar, Eisenkot condemn settler arson</b><em>AP · The New Arab</em></div>
-    <div class="m me"><span class="kick">Iran</span><b>Iran begins rolling power cuts</b><em>RFE/RL · Shafaq News</em></div>
-    <div class="m am"><span class="kick">Colombia</span><b>Ministry asks X to suspend ex-president Petro</b><em>El Tiempo · CNN en Español</em></div>
-    <div class="m as"><span class="kick">South Korea</span><b>Education minister quits over AI cheating</b><em>France 24 · JoongAng Daily</em></div>
-    <div class="m as"><span class="kick">Nepal · India</span><b>Nepal PM Shah arrives in Delhi</b><em>Outlook · Open</em></div>
-    <div class="m as"><span class="kick">Australia</span><b>Marles: US budget office wrong on AUKUS</b><em>Reuters · Japan Times</em></div>
-    <div class="check"><b class="t">DATE CHECK · LEFT OUT</b>Sat 21: Iran strike on Bahrain site, "El Chapo Isidro" arrest, Indonesia factory fire · Fri 20: Kryvyi Rih strike, Nigeria boat · Thu 19: Somalia expels UAE envoy</div>
-  </div>
-
-  <div class="sec">Briefly<span>culture, weather, sport, space, markets</span></div>
-  <div class="briefs">
-    <div class="bf"><i class="as">JAPAN</i><span><b>Shuri Castle hall restored after fire</b> <em>Japan Times · AP</em></span></div>
-    <div class="bf"><i class="am">F1</i><span><b>Verstappen wins Las Vegas GP</b> <em>F1 · Yahoo · Sat night local</em></span></div>
-    <div class="bf"><i class="af">S. AFRICA</i><span><b>Level 4 storm alert in KwaZulu-Natal</b> <em>IOL · ANA</em></span></div>
-    <div class="bf"><i class="eu">FOOTBALL</i><span><b>Liverpool 4-0 Man Utd</b> <em>ESPN · LFC</em></span></div>
-    <div class="bf"><i class="wd">VATICAN</i><span><b>Pope lunches with 1,300 poor guests</b> <em>Vatican News · CathNews</em></span></div>
-    <div class="bf"><i class="am">NFL</i><span><b>49ers beat Vikings 35-10 in Mexico City</b> <em>ESPN · AP</em></span></div>
-    <div class="bf"><i class="am">SPACE</i><span><b>SpaceX launches NROL-136 spy satellite</b> <em>NRO · KEYT</em></span></div>
-    <div class="bf"><i class="as">CRICKET</i><span><b>India's record 720/9 in Wellington</b> <em>AFP · Outlook</em></span></div>
-    <div class="bf"><i class="wd">MARKETS</i><span><b>Bitcoin back above $60,000</b> <em>Yahoo Finance · crypto.news</em></span></div>
-    <div class="bf"><i class="as">BADMINTON</i><span><b>Malaysians win Hong Kong Open men's doubles</b> <em>Bernama · The Star</em></span></div>
-  </div>
-
-  <div class="foot"><span><span class="k">REPORTED</span> every story carried by two or more outlets on 22 Nov · times UTC · pictures drawn in code</span><span>SUNDAY 22 NOVEMBER 2026</span></div>
+const pick = new URLSearchParams(location.search).get('layout') || 'b';
+document.body.insertAdjacentHTML('beforeend', (LAYOUTS[pick] || LAYOUTS.b)());
+</script>
 </body>
 </html>
