@@ -6,226 +6,188 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1024px; height: 1024px; overflow: hidden; }
-  body {
-    background: #f6f1e6; color: #16181d;
-    font-family: "Segoe UI", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  .serif { font-family: Georgia, "Times New Roman", serif; }
+  body { background: #f6f1e6; color: #16181d; font-family: "Segoe UI", Arial, sans-serif; position: relative; }
 
-  /* masthead */
-  .topbar { height: 26px; background: #14213d; color: #f6f1e6; display: flex; align-items: center;
-    justify-content: space-between; padding: 0 16px; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
-  .date { text-align: center; font-family: Georgia, serif; font-weight: 700; font-size: 74px; line-height: 80px; white-space: nowrap;
-    letter-spacing: -.01em; margin-top: 4px; color: #14213d; }
-  .deck { text-align: center; font-family: Georgia, serif; font-style: italic; font-size: 19px; color: #a4161a;
-    margin-top: -2px; }
-  .rule { height: 3px; background: #14213d; margin: 7px 16px 0; }
+  .topbar { height: 24px; background: #14213d; color: #f6f1e6; display: flex; align-items: center;
+    justify-content: space-between; padding: 0 16px; font-size: 12px; font-weight: 700; letter-spacing: .1em; }
+  .date { text-align: center; font-family: Georgia, serif; font-weight: 700; font-size: 74px; line-height: 78px;
+    white-space: nowrap; color: #14213d; margin-top: 2px; }
+  .deck { text-align: center; font-family: Georgia, serif; font-style: italic; font-size: 18px; color: #a4161a; }
 
-  /* numbers */
-  .nums { display: flex; margin: 6px 16px 0; border-bottom: 1px solid #c9bfa9; padding-bottom: 5px; }
-  .num { flex: 1; text-align: center; border-right: 1px solid #c9bfa9; }
-  .num:last-child { border-right: 0; }
-  .num b { display: block; font-family: Georgia, serif; font-size: 27px; line-height: 30px; color: #a4161a; }
-  .num span { font-size: 11.5px; color: #3a3d44; font-weight: 600; }
+  .utc { margin: 6px 16px 0; background: #14213d; color: #f6f1e6; display: flex; gap: 14px; align-items: center;
+    padding: 4px 10px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .utc b { color: #f4d35e; margin-right: 4px; }
+  .utc .lab { letter-spacing: .12em; color: #9fb3d1; font-weight: 800; }
 
-  /* main cards */
-  .row1 { display: flex; gap: 12px; margin: 9px 16px 0; }
+  .row1 { display: flex; gap: 10px; margin: 8px 16px 0; }
   .card { flex: 1; background: #fffdf7; border: 1px solid #d8cfbb; position: relative; }
-  .art { height: 96px; display: block; width: 100%; }
-  .badge { position: absolute; top: 8px; right: 8px; font-size: 11px; font-weight: 800; letter-spacing: .08em;
-    padding: 3px 7px; color: #fff; border-radius: 2px; }
-  .rep { background: #2d6a4f; }
-  .clm { background: #b5651d; }
-  .num-tag { position: absolute; top: 8px; left: 8px; width: 22px; height: 22px; border-radius: 50%;
-    background: #14213d; color: #fff; font-size: 13px; font-weight: 800; display: flex; align-items: center;
-    justify-content: center; }
-  .txt { padding: 7px 10px 8px; }
-  .kick { font-size: 11.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-  .h { font-family: Georgia, serif; font-weight: 700; font-size: 25px; line-height: 27px; margin-top: 3px; }
-  .d { font-size: 13.5px; line-height: 17px; margin-top: 4px; color: #2b2e35; }
-  .src { font-size: 10.5px; color: #6b6f78; margin-top: 4px; }
+  .art { height: 84px; display: block; width: 100%; }
+  .badge { position: absolute; top: 6px; right: 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .07em;
+    padding: 2px 6px; color: #fff; border-radius: 2px; background: #2d6a4f; }
+  .badge.clm { background: #b5651d; }
+  .tag { position: absolute; top: 6px; left: 6px; width: 20px; height: 20px; border-radius: 50%; background: #14213d;
+    color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .txt { padding: 6px 9px 7px; }
+  .kick { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+  .h { font-family: Georgia, serif; font-weight: 700; font-size: 24px; line-height: 26px; margin-top: 2px; }
+  .d { font-size: 13px; line-height: 16px; margin-top: 4px; color: #2b2e35; }
+  .src { font-size: 10.5px; color: #6b6f78; margin-top: 3px; }
 
-  .row2 { display: flex; gap: 12px; margin: 10px 16px 0; }
+  .row2 { display: flex; gap: 10px; margin: 8px 16px 0; }
   .card.wide { display: flex; }
-  .card.wide .art { width: 150px; height: auto; flex: none; }
-  .card.wide .txt { flex: 1; }
-  .card.wide .badge { left: auto; }
+  .card.wide .art { width: 110px; height: auto; flex: none; }
+  .card.wide .h { font-size: 22px; line-height: 24px; }
 
-  /* regions colours */
   .eu { color: #1d4e89; } .me { color: #a4161a; } .as { color: #b5651d; }
   .am { color: #6a3d9a; } .af { color: #2d6a4f; } .wd { color: #3a3d44; }
 
-  /* also today */
-  .also-h { margin: 9px 16px 0; display: flex; align-items: baseline; gap: 10px;
-    border-top: 3px solid #14213d; padding-top: 4px; }
-  .also-h b { font-family: Georgia, serif; font-size: 17px; }
-  .also-h span { font-size: 11.5px; color: #3a3d44; font-weight: 600; }
-  .also { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 16px; row-gap: 2px; margin: 4px 16px 0; }
-  .it { font-size: 12.5px; line-height: 15px; border-bottom: 1px dotted #c9bfa9; padding-bottom: 3px; }
-  .it i { font-style: normal; font-weight: 800; font-size: 10.5px; letter-spacing: .06em; margin-right: 4px; }
-  .it b { font-weight: 700; }
-  .it em { font-style: normal; color: #6b6f78; font-size: 10.5px; }
+  .sec-h { margin: 8px 16px 0; display: flex; align-items: baseline; gap: 10px; border-top: 3px solid #14213d; padding-top: 3px; }
+  .sec-h b { font-family: Georgia, serif; font-size: 16px; }
+  .sec-h span { font-size: 11px; color: #3a3d44; font-weight: 600; }
 
-  /* date check + footer */
-  .check { margin: 7px 16px 0; border: 2px solid #a4161a; background: #fff6f2; padding: 5px 10px;
-    font-size: 11.5px; line-height: 15px; }
-  .check b.t { color: #a4161a; letter-spacing: .08em; margin-right: 6px; }
-  .srcs { margin: 6px 16px 0; font-size: 10.5px; line-height: 14px; color: #4a4e57; }
-  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 24px; background: #14213d; color: #f6f1e6;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 11px;
-    font-weight: 600; letter-spacing: .04em; }
-  .legend .rep, .legend .clm { padding: 1px 5px; border-radius: 2px; color: #fff; font-weight: 800; font-size: 10px; }
+  .mid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 10px; margin: 4px 16px 0; }
+  .m { background: #fffdf7; border-left: 4px solid currentColor; padding: 3px 7px 4px; }
+  .m i { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .06em; }
+  .m b { display: block; font-family: Georgia, serif; font-size: 16.5px; line-height: 19px; color: #16181d; }
+  .m span { display: block; font-size: 11.5px; line-height: 14px; color: #3a3d44; }
+  .m em { font-style: normal; font-size: 10px; color: #6b6f78; }
+
+  .list { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 14px; margin: 6px 16px 0; }
+  .it { font-size: 13.5px; line-height: 17px; border-bottom: 1px dotted #c9bfa9; padding-bottom: 4px; }
+  .it i { font-style: normal; font-weight: 800; font-size: 10.5px; letter-spacing: .05em; margin-right: 3px; }
+  .it b { font-weight: 700; }
+  .it em { font-style: normal; color: #6b6f78; font-size: 10px; }
+
+  .check { margin: 7px 16px 0; border: 2px solid #a4161a; background: #fff6f2; padding: 4px 9px; font-size: 11px; line-height: 14px; }
+  .check b.t { color: #a4161a; letter-spacing: .08em; margin-right: 5px; }
+  .srcs { margin: 5px 16px 0; font-size: 10px; line-height: 13px; color: #4a4e57; }
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: #14213d; color: #f6f1e6;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 10.5px; font-weight: 600; }
+  .foot .k { padding: 1px 5px; border-radius: 2px; font-weight: 800; font-size: 9.5px; color: #fff; background: #2d6a4f; }
+  .foot .k.clm { background: #b5651d; }
 </style>
 </head>
 <body>
-  <div class="topbar"><span>THE WORLD IN ONE DAY</span><span>18 STORIES · 6 REGIONS · ALL FROM SUNDAY 22 NOV 2026</span></div>
+  <div class="topbar"><span>THE WORLD IN ONE DAY</span><span>20 STORIES · 6 REGIONS · EACH FROM SUNDAY 22 NOV 2026, TWO SOURCES</span></div>
   <div class="date">Sunday 22 November 2026</div>
-  <div class="deck">COP31 ends with no deal · 186 drones over Ukraine · Russian warship sunk in a Libyan port</div>
-  <div class="rule"></div>
-
-  <div class="nums">
-    <div class="num"><b>186</b><span>Russian drones overnight</span></div>
-    <div class="num"><b>161</b><span>downed or suppressed</span></div>
-    <div class="num"><b>~200</b><span>nations, no COP31 deal</span></div>
-    <div class="num"><b>98%+</b><span>Hong Kong EC poll turnout</span></div>
-    <div class="num"><b>720/9</b><span>India's record Test total in NZ</span></div>
-    <div class="num"><b>1,300</b><span>guests at Pope Leo's lunch</span></div>
+  <div class="deck">COP31 collapses without a deal · Russian drones kill 9+ near Kyiv · Russian warship sunk in Libya</div>
+  <div class="utc"><span class="lab">THE DAY IN UTC</span>
+    <span><b>~01:00</b>Blasts hit Russian corvette in Benghazi (03:00 local)</span>
+    <span><b>10:00</b>Hong Kong polls close (18:00 local)</span>
+    <span><b>12:23</b>SpaceX launches NROL-136</span>
   </div>
 
   <div class="row1">
-    <!-- 1 COP31 -->
     <div class="card">
-      <svg class="art" viewBox="0 0 322 118" preserveAspectRatio="xMidYMid slice">
-        <rect width="322" height="118" fill="#cfe3ec"/>
-        <circle cx="161" cy="70" r="44" fill="#4f8fb0"/>
-        <path d="M128 52 q14 -12 30 -4 q6 10 -6 16 q-10 4 -8 16 q-14 0 -16 -14 z M170 40 q16 0 22 12 q-4 12 -14 8 q-12 -2 -8 -20 z M176 86 q12 -6 20 4 q-6 12 -18 8 z" fill="#7bb36a"/>
-        <rect x="40" y="96" width="242" height="22" fill="#8a6f4e"/>
-        <rect x="30" y="92" width="262" height="6" fill="#6f5638"/>
-        <g stroke="#a4161a" stroke-width="7" stroke-linecap="round"><line x1="216" y1="44" x2="256" y2="84"/><line x1="256" y1="44" x2="216" y2="84"/></g>
-        <text x="62" y="54" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="22" fill="#a4161a">NO</text>
-        <text x="62" y="80" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="22" fill="#a4161a">DEAL</text>
+      <svg class="art" viewBox="0 0 322 84" preserveAspectRatio="xMidYMid slice">
+        <rect width="322" height="84" fill="#cfe3ec"/>
+        <circle cx="160" cy="54" r="36" fill="#4f8fb0"/>
+        <path d="M134 40 q12 -10 24 -3 q5 8 -5 13 q-8 3 -6 13 q-12 0 -13 -11z M168 30 q13 0 18 10 q-3 10 -11 6 q-10 -2 -7 -16z" fill="#7bb36a"/>
+        <rect x="30" y="74" width="262" height="10" fill="#6f5638"/>
+        <g stroke="#a4161a" stroke-width="7" stroke-linecap="round"><line x1="214" y1="30" x2="248" y2="64"/><line x1="248" y1="30" x2="214" y2="64"/></g>
+        <text x="74" y="46" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="20" fill="#a4161a">NO DEAL</text>
       </svg>
-      <span class="num-tag">1</span><span class="badge rep">REPORTED</span>
+      <span class="tag">1</span><span class="badge">REPORTED</span>
       <div class="txt">
         <div class="kick wd">Climate · Antalya, Türkiye</div>
-        <div class="h">COP31 summit ends without a deal</div>
-        <div class="d">Talks collapse over fossil fuels; the EU, Panama, Marshall Islands and Norway reject a text that drops them.</div>
+        <div class="h">COP31 summit collapses without a deal</div>
+        <div class="d">First failure since 2009: the EU, Panama, Marshall Islands and Norway reject a text that drops fossil fuels.</div>
         <div class="src">CNN · CBS · NPR</div>
       </div>
     </div>
-    <!-- 2 Ukraine -->
     <div class="card">
-      <svg class="art" viewBox="0 0 322 118" preserveAspectRatio="xMidYMid slice">
-        <rect width="322" height="118" fill="#0f1a33"/>
-        <g fill="#f4d35e">
-          <path d="M40 22 l14 5 -14 5 4 -5z"/><path d="M90 14 l14 5 -14 5 4 -5z"/><path d="M150 26 l14 5 -14 5 4 -5z"/>
-          <path d="M210 12 l14 5 -14 5 4 -5z"/><path d="M262 30 l14 5 -14 5 4 -5z"/><path d="M120 44 l14 5 -14 5 4 -5z"/>
-          <path d="M236 50 l14 5 -14 5 4 -5z"/>
-        </g>
-        <g stroke="#e63946" stroke-width="3"><line x1="40" y1="14" x2="60" y2="34"/><line x1="60" y1="14" x2="40" y2="34"/><line x1="200" y1="4" x2="220" y2="24"/><line x1="220" y1="4" x2="200" y2="24"/></g>
-        <path d="M18 118 L80 30 L100 118 Z" fill="#ffffff" opacity=".13"/>
-        <rect x="130" y="70" width="70" height="48" fill="#2b3550"/>
-        <g fill="#f4d35e"><rect x="138" y="78" width="9" height="8"/><rect x="156" y="78" width="9" height="8"/><rect x="138" y="94" width="9" height="8"/><rect x="174" y="94" width="9" height="8"/></g>
-        <path d="M200 70 l-12 0 l8 12 l-10 6 l14 8 l0 -26z" fill="#0f1a33"/>
-        <path d="M188 64 q8 -14 18 -6 q4 -12 14 -4" stroke="#e76f51" stroke-width="5" fill="none"/>
-        <rect x="220" y="84" width="46" height="34" fill="#2b3550"/><rect x="40" y="90" width="60" height="28" fill="#2b3550"/>
+      <svg class="art" viewBox="0 0 322 84" preserveAspectRatio="xMidYMid slice">
+        <rect width="322" height="84" fill="#0f1a33"/>
+        <g fill="#f4d35e"><path d="M40 16 l13 5 -13 5 4 -5z"/><path d="M96 10 l13 5 -13 5 4 -5z"/><path d="M150 22 l13 5 -13 5 4 -5z"/><path d="M226 12 l13 5 -13 5 4 -5z"/><path d="M276 26 l13 5 -13 5 4 -5z"/></g>
+        <rect x="120" y="36" width="80" height="48" fill="#2b3550"/>
+        <g fill="#f4d35e"><rect x="128" y="44" width="9" height="7"/><rect x="146" y="44" width="9" height="7"/><rect x="128" y="58" width="9" height="7"/><rect x="128" y="72" width="9" height="7"/></g>
+        <path d="M200 36 l-26 0 l10 14 l-12 8 l16 10 l-6 16 l18 0z" fill="#0f1a33"/>
+        <path d="M168 34 q8 -14 18 -6 q4 -12 14 -4" stroke="#e76f51" stroke-width="5" fill="none"/>
+        <rect x="230" y="54" width="50" height="30" fill="#2b3550"/><rect x="30" y="58" width="60" height="26" fill="#2b3550"/>
       </svg>
-      <span class="num-tag">2</span><span class="badge rep">REPORTED</span>
+      <span class="tag">2</span><span class="badge">REPORTED</span>
       <div class="txt">
-        <div class="kick eu">War · Ukraine, overnight</div>
-        <div class="h">Russia fires 186 drones at Ukraine</div>
-        <div class="d">Air force: 161 downed or suppressed, 18 sites hit. Part of a five-storey block destroyed in Dymer, Kyiv region.</div>
-        <div class="src">Ukrainian Air Force · ISW</div>
+        <div class="kick eu">War · Kyiv region, Ukraine</div>
+        <div class="h">Russian drones kill at least 9 in Dymer</div>
+        <div class="d">186 drones fired overnight, 161 downed (air force); part of a five-storey block collapses. One killed in Zaporizhzhia.</div>
+        <div class="src">Ukrainian Air Force · Kyiv region admin · Al Jazeera · Ukrinform</div>
       </div>
     </div>
-    <!-- 3 Merkury sunk at Benghazi -->
     <div class="card">
-      <svg class="art" viewBox="0 0 322 118" preserveAspectRatio="xMidYMid slice">
-        <rect width="322" height="118" fill="#f3dfc1"/>
-        <rect x="0" y="44" width="110" height="22" fill="#c9b79c"/><rect x="18" y="26" width="14" height="18" fill="#b8a586"/><rect x="60" y="32" width="22" height="12" fill="#b8a586"/>
-        <rect y="62" width="322" height="56" fill="#3d7ea6"/>
-        <g transform="translate(200 72) rotate(24)">
-          <path d="M-70 0 h140 l-14 18 h-112z" fill="#5c677d"/>
-          <rect x="-24" y="-18" width="40" height="18" fill="#8d99ae"/><rect x="-6" y="-34" width="6" height="16" fill="#8d99ae"/>
-        </g>
-        <rect y="86" width="322" height="32" fill="#3d7ea6" opacity=".85"/>
-        <g stroke="#f6f1e6" stroke-width="3" fill="none"><path d="M24 104 q10 -6 20 0 t20 0"/><path d="M262 100 q10 -6 20 0 t20 0"/></g>
-        <g fill="#14213d"><path d="M110 98 l-26 -4 0 8z"/><path d="M96 110 l-26 -4 0 8z"/></g>
+      <svg class="art" viewBox="0 0 322 84" preserveAspectRatio="xMidYMid slice">
+        <rect width="322" height="84" fill="#f3dfc1"/>
+        <rect x="0" y="24" width="110" height="20" fill="#c9b79c"/><rect x="18" y="10" width="14" height="14" fill="#b8a586"/>
+        <rect y="40" width="322" height="44" fill="#3d7ea6"/>
+        <g transform="translate(200 50) rotate(24)"><path d="M-66 0 h132 l-13 16 h-106z" fill="#5c677d"/><rect x="-22" y="-16" width="38" height="16" fill="#8d99ae"/></g>
+        <rect y="60" width="322" height="24" fill="#3d7ea6" opacity=".85"/>
+        <g fill="#14213d"><path d="M108 70 l-24 -4 0 8z"/><path d="M94 80 l-24 -4 0 8z"/></g>
       </svg>
-      <span class="num-tag">3</span><span class="badge rep">REPORTED</span>
+      <span class="tag">3</span><span class="badge">REPORTED</span>
       <div class="txt">
         <div class="kick af">War at sea · Benghazi, Libya</div>
         <div class="h">Russian warship sunk in Libyan port</div>
-        <div class="d">Corvette Merkury capsizes at Benghazi after a pre-dawn naval-drone attack; satellite images show it mostly underwater.</div>
-        <div class="src">CNN · NBC News · CBC</div>
+        <div class="d">Corvette Merkury capsizes after a pre-dawn drone attack; Libyan officials say drones came from western Libya.</div>
+        <div class="src">CNN · NBC News · CBC · AP</div>
       </div>
     </div>
   </div>
 
   <div class="row2">
-    <!-- 4 Hong Kong -->
     <div class="card wide">
-      <svg class="art" viewBox="0 0 150 120" preserveAspectRatio="xMidYMid slice">
-        <rect width="150" height="120" fill="#fbe3d0"/>
-        <rect x="18" y="20" width="18" height="70" fill="#c9b79c"/><rect x="40" y="8" width="16" height="82" fill="#b8a586"/><rect x="104" y="14" width="20" height="76" fill="#c9b79c"/>
-        <rect x="40" y="58" width="70" height="50" fill="#14213d"/><rect x="62" y="56" width="26" height="5" fill="#f6f1e6"/>
-        <path d="M66 30 h20 v28 h-20z" fill="#fff" stroke="#14213d" stroke-width="2"/>
-        <path d="M70 44 l5 6 9 -12" stroke="#a4161a" stroke-width="4" fill="none"/>
-        <text x="75" y="88" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="15" fill="#f6f1e6">98%+</text>
+      <svg class="art" viewBox="0 0 110 96" preserveAspectRatio="xMidYMid slice">
+        <rect width="110" height="96" fill="#fbe3d0"/>
+        <rect x="14" y="40" width="82" height="52" fill="#14213d"/><rect x="40" y="38" width="30" height="5" fill="#f6f1e6"/>
+        <path d="M44 12 h22 v26 h-22z" fill="#fff" stroke="#14213d" stroke-width="2"/><path d="M48 25 l5 6 9 -12" stroke="#a4161a" stroke-width="4" fill="none"/>
+        <text x="55" y="74" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="18" fill="#f6f1e6">98%+</text>
       </svg>
-      <span class="num-tag">4</span><span class="badge rep">REPORTED</span>
+      <span class="tag">4</span><span class="badge">REPORTED</span>
       <div class="txt">
         <div class="kick as">Politics · Hong Kong</div>
-        <div class="h">Election Committee polls: turnout above 98%</div>
-        <div class="d">Subsector vote contested in 31 of 36 subsectors; final count 98.79% (5,640 of 5,709 voters).</div>
-        <div class="src">The Standard · LegCo statement via Dimsum Daily</div>
+        <div class="h">Election Committee vote: turnout above 98%</div>
+        <div class="d">31 of 36 subsectors contested; final count 98.79%.</div>
+        <div class="src">The Standard · LegCo</div>
       </div>
     </div>
-    <!-- 5 Alcaraz -->
     <div class="card wide">
-      <svg class="art" viewBox="0 0 150 120" preserveAspectRatio="xMidYMid slice">
-        <rect width="150" height="120" fill="#2a4d8f"/>
-        <rect x="0" y="78" width="150" height="42" fill="#1f3c73"/>
-        <line x1="0" y1="78" x2="150" y2="78" stroke="#fff" stroke-width="2"/>
-        <g transform="translate(58 52) rotate(-30)"><ellipse cx="0" cy="-12" rx="17" ry="22" fill="none" stroke="#f6f1e6" stroke-width="5"/><rect x="-3" y="10" width="6" height="30" fill="#f6f1e6"/></g>
-        <circle cx="106" cy="30" r="10" fill="#d9f04c"/>
-        <path d="M96 70 h28 l-4 16 h-20z M104 86 h12 v10 h-12z M98 96 h24 v6 h-24z" fill="#f4d35e"/>
+      <svg class="art" viewBox="0 0 110 96" preserveAspectRatio="xMidYMid slice">
+        <rect width="110" height="96" fill="#2a4d8f"/><rect y="62" width="110" height="34" fill="#1f3c73"/>
+        <g transform="translate(40 42) rotate(-30)"><ellipse cx="0" cy="-10" rx="14" ry="18" fill="none" stroke="#f6f1e6" stroke-width="4"/><rect x="-3" y="8" width="6" height="24" fill="#f6f1e6"/></g>
+        <circle cx="80" cy="24" r="8" fill="#d9f04c"/><path d="M70 58 h24 l-4 14 h-16z M76 72 h12 v8 h-12z M72 80 h20 v5 h-20z" fill="#f4d35e"/>
       </svg>
-      <span class="num-tag">5</span><span class="badge rep">REPORTED</span>
+      <span class="tag">5</span><span class="badge">REPORTED</span>
       <div class="txt">
         <div class="kick eu">Tennis · Turin, Italy</div>
         <div class="h">Alcaraz wins his first ATP Finals title</div>
-        <div class="d">Beats world No. 1 Alexander Zverev 6-2, 7-6(7), saving three set points; his 30th tour title.</div>
+        <div class="d">Beats world No. 1 Zverev 6-2, 7-6(7), saving three set points.</div>
         <div class="src">ATP Tour · Sky Sports · Al Jazeera</div>
       </div>
     </div>
   </div>
 
-  <div class="also-h"><b>Also on Sunday 22 November</b><span>13 more stories, each confirmed by two outlets</span></div>
-  <div class="also">
-    <div class="it"><i class="me">ISRAEL</i><b>Likud and Eisenkot's Yashar end coalition talks without a deal</b> <em>Haaretz · Japan Times</em></div>
-    <div class="it"><i class="as">S. KOREA</i><b>Education minister resigns over AI exam-cheating chaos</b> <em>France 24 · JoongAng</em></div>
-    <div class="it"><i class="am">F1</i><b>Verstappen wins Las Vegas GP by 0.639s from Norris</b> <em>F1 · Yahoo · Sat night local</em></div>
-
-    <div class="it"><i class="me">IRAN</i><b>Rolling power cuts begin as power plants run short of fuel</b> <em>RFE/RL · Shafaq</em></div>
-    <div class="it"><i class="as">NEPAL·INDIA</i><b>PM Balendra Shah lands in Delhi on first foreign trip</b> <em>Outlook · Open</em></div>
-    <div class="it"><i class="am">NFL · MEXICO</i><b>49ers beat Vikings 35-10 in Mexico City</b> <em>ESPN · AP</em></div>
-
-    <div class="it"><i class="eu">FOOTBALL</i><b>Liverpool 4-0 10-man Man Utd in Pochettino's first game</b> <em>ESPN · LFC</em></div>
-    <div class="it"><i class="as">AUSTRALIA</i><b>Marles says US budget office is wrong on AUKUS subs</b> <em>Reuters · Japan Times</em></div>
-    <div class="it"><i class="am">SPACE</i><b>SpaceX launches NROL-136 spy satellite at 12:23 UTC</b> <em>NRO · KEYT</em></div>
-
-    <div class="it"><i class="af">S. AFRICA</i><b>Level 4 storm warning puts 22 KZN municipalities on alert</b> <em>IOL · ANA</em></div>
-    <div class="it"><i class="as">CRICKET</i><b>India declare on record 720/9 in Wellington; NZ 119/2</b> <em>AFP · Outlook</em></div>
-    <div class="it"><i class="wd">VATICAN</i><b>Pope Leo XIV shares lunch with 1,300 poor guests</b> <em>Vatican News · CathNews</em></div>
-
-    <div class="it"><i class="wd">MARKETS</i><b>Bitcoin climbs back above $60,000 after weekend slump</b> <em>Yahoo Finance · crypto.news</em></div>
+  <div class="sec-h"><b>Also on Sunday 22 November</b><span>politics and power</span></div>
+  <div class="mid">
+    <div class="m me"><i>ISRAEL</i><b>Netanyahu–Eisenkot coalition talks end without a deal</b><span>Four-hour Likud–Yashar round in Herzliya</span><em>Haaretz · Japan Times</em></div>
+    <div class="m me"><i>IRAN</i><b>Rolling power cuts begin as plants run short of fuel</b><span>Grid operator Tavanir starts outages</span><em>RFE/RL · Shafaq News</em></div>
+    <div class="m am"><i>COLOMBIA</i><b>Government asks X to suspend ex-president Petro's account</b><span>Cites "possible incitement to violence"</span><em>CNN en Español · Infobae</em></div>
+    <div class="m as"><i>SOUTH KOREA</i><b>Education minister quits over AI exam-cheating chaos</b><span>President Lee accepts resignation</span><em>France 24 · JoongAng Daily</em></div>
+    <div class="m as"><i>NEPAL · INDIA</i><b>PM Balendra Shah lands in Delhi on first foreign trip</b><span>Two-day state visit begins</span><em>Outlook · Open</em></div>
+    <div class="m as"><i>AUSTRALIA</i><b>Marles says US budget office is wrong on AUKUS subs</b><span>Rejects CBO warning on US fleet</span><em>Reuters · Japan Times</em></div>
   </div>
 
-  <div class="check"><b class="t">DATE CHECK</b>Left out as earlier news: Iran's strike on a Bahrain industrial site (late Sat 21) · Indonesia candy-factory fire and Crew 3-0 Inter Miami (Sat 21) · Kryvyi Rih missile strike, Nigeria funeral-boat capsizing, Denmark expels Russian attaché (Fri 20) · Somalia expels UAE envoy (Thu 19).</div>
+  <div class="list">
+    <div class="it"><i class="am">F1</i><b>Verstappen wins Las Vegas GP by 0.639s</b> <em>F1 · Yahoo (Sat night local)</em></div>
+    <div class="it"><i class="eu">FOOTBALL</i><b>Liverpool 4-0 10-man Man Utd</b> <em>ESPN · LFC</em></div>
+    <div class="it"><i class="am">NFL</i><b>49ers beat Vikings 35-10 in Mexico City</b> <em>ESPN · AP</em></div>
+    <div class="it"><i class="as">CRICKET</i><b>India declare on record 720/9 in Wellington</b> <em>AFP · Outlook</em></div>
+    <div class="it"><i class="as">BADMINTON</i><b>Malaysia's Man–Tee win Hong Kong Open</b> <em>Bernama · The Star</em></div>
+    <div class="it"><i class="am">SPACE</i><b>SpaceX lifts NRO spy satellite from California</b> <em>NRO · KEYT</em></div>
+    <div class="it"><i class="wd">VATICAN</i><b>Pope Leo XIV lunches with 1,300 poor guests</b> <em>Vatican News · CathNews</em></div>
+    <div class="it"><i class="af">S. AFRICA</i><b>Level 4 storm alert for 22 KZN municipalities</b> <em>IOL · ANA</em></div>
+    <div class="it"><i class="wd">MARKETS</i><b>Bitcoin back above $60,000 after slump</b> <em>Yahoo Finance · crypto.news</em></div>
+  </div>
 
-  <div class="srcs">Sources: CNN · CBS · NPR · Euronews · Ukrainian Air Force · ISW · NBC News · CBC · The Standard · LegCo · ATP · Sky Sports · Al Jazeera · Haaretz · France 24 · RFE/RL · Reuters · AFP · ESPN · F1 · NRO · IOL · Vatican News · Yahoo Finance. Times in UTC. Pictures drawn in code; no photographs.</div>
-  <div class="foot"><span class="legend"><span class="rep">REPORTED</span> carried by two or more news outlets on 22 Nov</span><span>SUNDAY 22 NOVEMBER 2026 · ONE PAGE</span></div>
+  <div class="check"><b class="t">DATE CHECK</b>Left out as earlier news: Iran's strike on a Bahrain industrial site (late Sat 21) · "El Chapo Isidro" captured in Sinaloa, 11 dead (Sat 21) · Indonesia candy-factory fire (Sat 21) · Kryvyi Rih missile strike, Nigeria funeral-boat capsizing (Fri 20) · Somalia expels UAE envoy (Thu 19).</div>
+  <div class="srcs">Sources: CNN · CBS · NPR · Ukrainian Air Force · Al Jazeera · Ukrinform · NBC News · CBC · AP · The Standard · LegCo · ATP · Sky Sports · Haaretz · RFE/RL · Infobae · France 24 · Reuters · AFP · ESPN · F1 · Bernama · NRO · Vatican News · IOL · Yahoo Finance. Pictures drawn in code; no photographs.</div>
+  <div class="foot"><span><span class="k">REPORTED</span> carried by two or more outlets on 22 Nov · times in UTC</span><span>SUNDAY 22 NOVEMBER 2026 · ONE PAGE</span></div>
 </body>
 </html>
