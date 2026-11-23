@@ -45,12 +45,12 @@
   .ind b { display: block; font-family: Georgia, serif; font-size: 22px; line-height: 24px; color: #f4d35e; }
   .ind span { font-size: 10.5px; font-weight: 600; }
 
-  .notes { display: grid; gap: 0 14px; }
+  .notes { display: grid; gap: 0 12px; }
   .nt { display: flex; gap: 6px; align-items: flex-start; border-bottom: 1px dotted #c3b89f; padding: 3px 0 3px; }
   .nt i { flex: none; font-style: normal; font-size: 10px; font-weight: 800; color: #fff; background: var(--c);
     border-radius: 8px; min-width: 18px; text-align: center; padding: 0 3px; margin-top: 3px; }
-  .nt b { display: block; font-family: Georgia, serif; font-size: 15px; line-height: 18px; }
-  .nt em { display: block; font-style: normal; font-size: 9.5px; line-height: 12px; color: #6b6f78; white-space: nowrap; }
+  .nt b { display: block; font-family: Georgia, serif; font-size: 16px; line-height: 19px; }
+  .nt em { display: block; font-style: normal; font-size: 10px; line-height: 12px; color: #6b6f78; white-space: nowrap; }
   .map { background: #dfe9ee; border: 1px solid #c4d3da; position: relative; }
   .map .cap { position: absolute; left: 6px; top: 4px; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: #14213d; }
   .check { margin: 6px 14px 0; border: 2px solid #a4161a; background: #fff5f1; padding: 3px 9px; font-size: 11px; line-height: 14px; }
@@ -93,13 +93,15 @@ const NOTES = [
   { r: 'am', k: 'SPACE', h: 'SpaceX launches NROL-136 spy satellite', s: 'NRO · KEYT', at: [-120.6, 34.7] },
   { r: 'wd', k: 'MARKETS', h: 'Bitcoin back above $60,000', s: 'Yahoo Finance · crypto.news', at: null },
 ];
-const IND = [['186', 'drones at Ukraine'], ['98%+', 'HK poll turnout'], ['720/9', "India's record total"], ['1,300', "guests at Pope's lunch"], ['0.639s', 'Verstappen margin'], ['$60k', 'Bitcoin back above']];
+// Each figure is one already in the stories below, from the same two sources.
+const IND = [['186', 'drones fired at Ukraine'], ['3 dead', 'in Dymer by 17:09 UTC'], ['~200', 'nations, no COP31 deal'], ['98.79%', 'HK poll turnout'], ['720/9', "India's record in NZ"], ['$60k', 'Bitcoin back above']];
 const UTC = [['~01:00', 'Blasts hit Russian corvette, Benghazi'], ['10:00', 'Hong Kong polls close'], ['12:23', 'SpaceX launches NROL-136'], ['17:09', 'Dymer toll: 3 dead']];
 const CHECK = 'Sat 21: Iran strike on Bahrain site · "El Chapo Isidro" arrest · Indonesia factory fire &nbsp;|&nbsp; Fri 20: Kryvyi Rih strike · Nigeria boat capsizing &nbsp;|&nbsp; Thu 19: Somalia expels UAE envoy';
 
 // Small scenes, drawn on a 160x90 canvas.
 const ART = {
-  cop: `<rect width="160" height="90" fill="#cfe3ec"/><circle cx="80" cy="44" r="28" fill="#4f8fb0"/><path d="M62 34q10-8 20-2q4 7-4 10q-7 2-5 10q-10 0-11-8z M86 26q11 0 14 8q-2 8-9 5q-8-2-5-13z" fill="#7bb36a"/><rect x="10" y="74" width="140" height="16" fill="#6f5638"/><path d="M110 18 l28 28 M138 18 l-28 28" stroke="#a4161a" stroke-width="7" stroke-linecap="round"/><text x="34" y="30" font-family="Georgia" font-weight="700" font-size="15" fill="#a4161a" text-anchor="middle">NO</text><text x="34" y="48" font-family="Georgia" font-weight="700" font-size="15" fill="#a4161a" text-anchor="middle">DEAL</text>`,
+  // The closing plenary: the draft on the screen has its fossil-fuel line struck out, and the gavel is stamped NO DEAL.
+  cop: `<rect width="160" height="90" fill="#dbe7ee"/><rect x="0" y="0" width="160" height="13" fill="#1f4e79"/><text x="80" y="9.5" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7.5" fill="#fff" letter-spacing=".8">COP31 · ANTALYA · CLOSING PLENARY</text><rect x="18" y="18" width="70" height="44" fill="#fff" stroke="#9fb3c8"/><text x="22" y="26" font-family="Arial" font-weight="700" font-size="5.5" fill="#1f4e79">DRAFT DECISION</text><g fill="#c3ced8"><rect x="22" y="30" width="58" height="3"/><rect x="22" y="36" width="52" height="3"/><rect x="22" y="50" width="56" height="3"/><rect x="22" y="56" width="40" height="3"/></g><text x="22" y="46" font-family="Arial" font-size="6" fill="#a4161a">fossil fuels</text><line x1="21" y1="44" x2="62" y2="44" stroke="#a4161a" stroke-width="1.6"/><rect x="100" y="34" width="44" height="28" fill="#6f5638"/><rect x="104" y="27" width="36" height="7" fill="#1f4e79"/><path d="M114 22l14-6 3 6-14 6z" fill="#8a6f4e"/><rect x="122" y="18" width="3" height="14" fill="#8a6f4e" transform="rotate(-24 123 25)"/><g fill="#3a4766"><circle cx="16" cy="74" r="5"/><circle cx="34" cy="74" r="5"/><circle cx="52" cy="74" r="5"/><circle cx="70" cy="74" r="5"/><circle cx="88" cy="74" r="5"/><circle cx="106" cy="74" r="5"/><circle cx="124" cy="74" r="5"/><circle cx="142" cy="74" r="5"/></g><rect x="0" y="79" width="160" height="11" fill="#3a4766"/><g transform="rotate(-10 120 48)"><rect x="88" y="36" width="66" height="24" fill="#fff5f1" stroke="#a4161a" stroke-width="3"/><text x="121" y="54" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="16" fill="#a4161a">NO DEAL</text></g>`,
   drones: `<rect width="160" height="90" fill="#0f1a33"/><g fill="#f4d35e"><path d="M18 14l14 5-14 5 4-5z"/><path d="M52 8l14 5-14 5 4-5z"/><path d="M122 12l14 5-14 5 4-5z"/></g><path d="M50 90v-48h64v48z" fill="#3a4766"/><g fill="#f4d35e"><rect x="58" y="50" width="8" height="7"/><rect x="58" y="64" width="8" height="7"/><rect x="58" y="78" width="8" height="7"/><rect x="74" y="64" width="8" height="7"/></g><path d="M114 42l-22 0 8 12-10 7 13 9-5 20h16z" fill="#0f1a33"/><path d="M86 40q6-12 15-5q4-10 12-3" stroke="#e76f51" stroke-width="5" fill="none"/>`,
   ship: `<rect width="160" height="90" fill="#f3dfc1"/><rect y="0" width="160" height="30" fill="#f3dfc1"/><path d="M0 30h46v-8h14v8h20v16H0z" fill="#c9b79c"/><rect y="46" width="160" height="44" fill="#3d7ea6"/><g transform="translate(96 52) rotate(24)"><path d="M-44 0h88l-9 11h-70z" fill="#4a5568"/><rect x="-14" y="-11" width="24" height="11" fill="#8d99ae"/><rect x="-4" y="-21" width="4" height="10" fill="#8d99ae"/></g><rect y="62" width="160" height="28" fill="#3d7ea6"/><path d="M108 36q-6-12 4-18q-2 10 8 12" fill="#9aa5b1"/>`,
   ballot: `<rect width="160" height="90" fill="#fbe3d0"/><rect x="40" y="40" width="80" height="44" fill="#14213d"/><rect x="66" y="38" width="28" height="5" fill="#f4efe3"/><path d="M68 10h24v30h-24z" fill="#fff" stroke="#14213d" stroke-width="2"/><path d="M72 25l5 6 10-13" stroke="#a4161a" stroke-width="4" fill="none"/><text x="80" y="70" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="19" fill="#f4d35e">98%</text>`,
@@ -151,9 +153,15 @@ function notes(cols) {
 function map(w, h, title) {
   const px = (lon) => ((lon + 180) / 360) * w, py = (lat) => ((84 - lat) / 144) * h;
   const land = LAND.map((p) => `<path d="M${p.map(([a, b]) => `${px(a).toFixed(1)} ${py(b).toFixed(1)}`).join('L')}Z" fill="#b9c7a3" stroke="#9fb08a" stroke-width=".6"/>`).join('');
+  // Each story keeps a dot at its true place; where places crowd, its number sits a little away on a callout line.
+  const OFF = { 1: [-4, -14], 2: [8, -10], 3: [-14, 6], 5: [-14, -4], 6: [-16, 14], 7: [4, 16], 8: [12, -8], 9: [12, 10],
+    16: [2, 14], 18: [-12, -8], 4: [-4, 14], 14: [14, 6], 11: [10, -10], 22: [-14, 6], 17: [10, -8], 20: [-12, -6] };
   const pins = all.filter((x) => x.at).map((x) => {
-    const X = Math.min(px(x.at[0]), w - 9), Y = Math.max(py(x.at[1]), 18);
-    return `<g><circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="7.5" fill="#a4161a" stroke="#fff" stroke-width="1.2"/><text x="${X.toFixed(1)}" y="${(Y + 3.4).toFixed(1)}" text-anchor="middle" font-family="Arial" font-weight="700" font-size="9" fill="#fff">${x.no}</text></g>`;
+    const X = px(x.at[0]), Y = py(x.at[1]);
+    const [dx, dy] = OFF[x.no] || [0, 0];
+    const LX = Math.min(Math.max(X + dx, 8), w - 8), LY = Math.min(Math.max(Y + dy, 18), h - 8);
+    const line = dx || dy ? `<line x1="${X.toFixed(1)}" y1="${Y.toFixed(1)}" x2="${LX.toFixed(1)}" y2="${LY.toFixed(1)}" stroke="#a4161a" stroke-width="1"/>` : '';
+    return `<g>${line}<circle cx="${X.toFixed(1)}" cy="${Y.toFixed(1)}" r="2.2" fill="#15171c"/><circle cx="${LX.toFixed(1)}" cy="${LY.toFixed(1)}" r="6.8" fill="#a4161a" stroke="#fff" stroke-width="1"/><text x="${LX.toFixed(1)}" y="${(LY + 3.2).toFixed(1)}" text-anchor="middle" font-family="Arial" font-weight="700" font-size="8.5" fill="#fff">${x.no}</text></g>`;
   }).join('');
   return `<div class="map" style="width:${w}px;height:${h}px"><svg width="${w}" height="${h}">${land}${pins}</svg><span class="cap">${title}</span></div>`;
 }
@@ -178,9 +186,9 @@ const LAYOUTS = {
   b() {
     const side = LEADS.slice(1).map((x) => `<div class="card lead side ${x.r}" style="display:flex">${art(x.art, 120).replace('style="height:120px;', 'style="height:auto;width:170px;flex:none;')}<span class="n">${x.no}</span>${badge(x)}<div class="txt"><div class="k">${x.k}</div><h2 style="font-size:23px">${x.h}</h2><p>${x.d}</p><div class="s">${x.s}</div></div></div>`).join('');
     return head
-      + `<div class="row" style="grid-template-columns:1.15fr 1fr">${lead(LEADS[0], 150, 32)}<div style="display:grid;gap:8px">${side}</div></div>`
+      + `<div class="row" style="grid-template-columns:1.15fr 1fr">${lead(LEADS[0], 136, 32)}<div style="display:grid;gap:8px">${side}</div></div>`
       + `<div class="row" style="grid-template-columns:repeat(4,1fr)">${MODS.map((x) => mod(x, 38)).join('')}</div>`
-      + `<div class="row" style="grid-template-columns:1fr 262px;align-items:start">${notes(2)}<div>${map(262, 104, 'WHERE · pins = story numbers')}`
+      + `<div class="row" style="grid-template-columns:1fr 236px;align-items:start">${notes(2)}<div>${map(236, 112, 'WHERE · numbers = stories')}`
       + `<div class="ind" style="margin:4px 0 0;grid-template-columns:1fr 1fr 1fr">${IND.map(([a, b]) => `<div style="padding:2px 1px 3px"><b style="font-size:18px;line-height:20px">${a}</b><span style="font-size:9.5px">${b}</span></div>`).join('')}</div></div></div>`
       + check + foot;
   },
