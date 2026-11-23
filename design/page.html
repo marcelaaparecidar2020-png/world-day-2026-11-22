@@ -21,7 +21,7 @@
 
   .row1 { display: flex; gap: 10px; margin: 8px 16px 0; }
   .card { flex: 1; background: #fffdf7; border: 1px solid #d8cfbb; position: relative; }
-  .art { height: 84px; display: block; width: 100%; }
+  .art { height: 66px; display: block; width: 100%; }
   .badge { position: absolute; top: 6px; right: 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .07em;
     padding: 2px 6px; color: #fff; border-radius: 2px; background: #2d6a4f; }
   .badge.clm { background: #b5651d; }
@@ -29,14 +29,14 @@
     color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
   .txt { padding: 6px 9px 7px; }
   .kick { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-  .h { font-family: Georgia, serif; font-weight: 700; font-size: 24px; line-height: 26px; margin-top: 2px; }
-  .d { font-size: 13px; line-height: 16px; margin-top: 4px; color: #2b2e35; }
+  .h { font-family: Georgia, serif; font-weight: 700; font-size: 26px; line-height: 28px; margin-top: 2px; }
+  .d { font-size: 13.5px; line-height: 17px; margin-top: 4px; color: #2b2e35; }
   .src { font-size: 10.5px; color: #6b6f78; margin-top: 3px; }
 
   .row2 { display: flex; gap: 10px; margin: 8px 16px 0; }
   .card.wide { display: flex; }
-  .card.wide .art { width: 110px; height: auto; flex: none; }
-  .card.wide .h { font-size: 22px; line-height: 24px; }
+  .card.wide .art { width: 84px; height: auto; flex: none; }
+  .card.wide .h { font-size: 24px; line-height: 26px; }
 
   .eu { color: #1d4e89; } .me { color: #a4161a; } .as { color: #b5651d; }
   .am { color: #6a3d9a; } .af { color: #2d6a4f; } .wd { color: #3a3d44; }
@@ -48,17 +48,18 @@
   .mid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 10px; margin: 4px 16px 0; }
   .m { background: #fffdf7; border-left: 4px solid currentColor; padding: 3px 7px 4px; }
   .m i { font-style: normal; font-size: 10.5px; font-weight: 800; letter-spacing: .06em; }
-  .m b { display: block; font-family: Georgia, serif; font-size: 16.5px; line-height: 19px; color: #16181d; }
+  .m b { display: block; font-family: Georgia, serif; font-size: 17.5px; line-height: 20px; color: #16181d; }
   .m span { display: block; font-size: 11.5px; line-height: 14px; color: #3a3d44; }
   .m em { font-style: normal; font-size: 10px; color: #6b6f78; }
 
-  .list { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 14px; margin: 6px 16px 0; }
-  .it { font-size: 13.5px; line-height: 17px; border-bottom: 1px dotted #c9bfa9; padding-bottom: 4px; }
-  .it i { font-style: normal; font-weight: 800; font-size: 10.5px; letter-spacing: .05em; margin-right: 3px; }
-  .it b { font-weight: 700; }
+  .list { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 14px; margin: 7px 16px 0; }
+  .it { border-bottom: 1px dotted #c9bfa9; padding-bottom: 4px; }
+  .it { font-size: 15.5px; line-height: 19px; }
+  .it i { font-style: normal; font-weight: 800; font-size: 10.5px; letter-spacing: .06em; margin-right: 4px; }
+  .it b { font-family: Georgia, serif; font-weight: 700; }
   .it em { font-style: normal; color: #6b6f78; font-size: 10px; }
 
-  .check { margin: 7px 16px 0; border: 2px solid #a4161a; background: #fff6f2; padding: 4px 9px; font-size: 11px; line-height: 14px; }
+  .check { margin: 8px 16px 0; border: 2px solid #a4161a; background: #fff6f2; padding: 4px 9px; font-size: 11.5px; line-height: 15px; }
   .check b.t { color: #a4161a; letter-spacing: .08em; margin-right: 5px; }
   .srcs { margin: 5px 16px 0; font-size: 10px; line-height: 13px; color: #4a4e57; }
   .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; background: #14213d; color: #f6f1e6;
@@ -81,16 +82,14 @@
     <div class="card">
       <svg class="art" viewBox="0 0 322 84" preserveAspectRatio="xMidYMid slice">
         <rect width="322" height="84" fill="#cfe3ec"/>
-        <circle cx="160" cy="54" r="36" fill="#4f8fb0"/>
-        <path d="M134 40 q12 -10 24 -3 q5 8 -5 13 q-8 3 -6 13 q-12 0 -13 -11z M168 30 q13 0 18 10 q-3 10 -11 6 q-10 -2 -7 -16z" fill="#7bb36a"/>
-        <rect x="30" y="74" width="262" height="10" fill="#6f5638"/>
-        <g stroke="#a4161a" stroke-width="7" stroke-linecap="round"><line x1="214" y1="30" x2="248" y2="64"/><line x1="248" y1="30" x2="214" y2="64"/></g>
-        <text x="74" y="46" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="20" fill="#a4161a">NO DEAL</text>
+        <circle cx="200" cy="42" r="30" fill="#4f8fb0"/>
+        <g stroke="#a4161a" stroke-width="8" stroke-linecap="round"><line x1="178" y1="20" x2="222" y2="64"/><line x1="222" y1="20" x2="178" y2="64"/></g>
+        <text x="96" y="52" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="26" fill="#a4161a">NO DEAL</text>
       </svg>
       <span class="tag">1</span><span class="badge">REPORTED</span>
       <div class="txt">
         <div class="kick wd">Climate · Antalya, Türkiye</div>
-        <div class="h">COP31 summit collapses without a deal</div>
+        <div class="h">COP31 collapses without a deal</div>
         <div class="d">First failure since 2009: the EU, Panama, Marshall Islands and Norway reject a text that drops fossil fuels.</div>
         <div class="src">CNN · CBS · NPR</div>
       </div>
@@ -98,12 +97,9 @@
     <div class="card">
       <svg class="art" viewBox="0 0 322 84" preserveAspectRatio="xMidYMid slice">
         <rect width="322" height="84" fill="#0f1a33"/>
-        <g fill="#f4d35e"><path d="M40 16 l13 5 -13 5 4 -5z"/><path d="M96 10 l13 5 -13 5 4 -5z"/><path d="M150 22 l13 5 -13 5 4 -5z"/><path d="M226 12 l13 5 -13 5 4 -5z"/><path d="M276 26 l13 5 -13 5 4 -5z"/></g>
-        <rect x="120" y="36" width="80" height="48" fill="#2b3550"/>
-        <g fill="#f4d35e"><rect x="128" y="44" width="9" height="7"/><rect x="146" y="44" width="9" height="7"/><rect x="128" y="58" width="9" height="7"/><rect x="128" y="72" width="9" height="7"/></g>
-        <path d="M200 36 l-26 0 l10 14 l-12 8 l16 10 l-6 16 l18 0z" fill="#0f1a33"/>
-        <path d="M168 34 q8 -14 18 -6 q4 -12 14 -4" stroke="#e76f51" stroke-width="5" fill="none"/>
-        <rect x="230" y="54" width="50" height="30" fill="#2b3550"/><rect x="30" y="58" width="60" height="26" fill="#2b3550"/>
+        <g fill="#f4d35e"><path d="M70 18 l16 6 -16 6 5 -6z"/><path d="M110 30 l16 6 -16 6 5 -6z"/><path d="M240 20 l16 6 -16 6 5 -6z"/></g>
+        <path d="M130 84 v-44 h70 v44 z M200 40 l-24 0 l10 14 l-12 8 l16 10 l-6 12 l16 0z" fill="#3a4766" fill-rule="evenodd"/>
+        <path d="M168 36 q8 -14 18 -6 q4 -12 14 -4" stroke="#e76f51" stroke-width="5" fill="none"/>
       </svg>
       <span class="tag">2</span><span class="badge">REPORTED</span>
       <div class="txt">
@@ -116,11 +112,9 @@
     <div class="card">
       <svg class="art" viewBox="0 0 322 84" preserveAspectRatio="xMidYMid slice">
         <rect width="322" height="84" fill="#f3dfc1"/>
-        <rect x="0" y="24" width="110" height="20" fill="#c9b79c"/><rect x="18" y="10" width="14" height="14" fill="#b8a586"/>
         <rect y="40" width="322" height="44" fill="#3d7ea6"/>
-        <g transform="translate(200 50) rotate(24)"><path d="M-66 0 h132 l-13 16 h-106z" fill="#5c677d"/><rect x="-22" y="-16" width="38" height="16" fill="#8d99ae"/></g>
-        <rect y="60" width="322" height="24" fill="#3d7ea6" opacity=".85"/>
-        <g fill="#14213d"><path d="M108 70 l-24 -4 0 8z"/><path d="M94 80 l-24 -4 0 8z"/></g>
+        <g transform="translate(170 46) rotate(22)"><path d="M-66 0 h132 l-13 16 h-106z" fill="#5c677d"/><rect x="-22" y="-16" width="38" height="16" fill="#8d99ae"/></g>
+        <rect y="58" width="322" height="26" fill="#3d7ea6"/>
       </svg>
       <span class="tag">3</span><span class="badge">REPORTED</span>
       <div class="txt">
@@ -134,11 +128,9 @@
 
   <div class="row2">
     <div class="card wide">
-      <svg class="art" viewBox="0 0 110 96" preserveAspectRatio="xMidYMid slice">
-        <rect width="110" height="96" fill="#fbe3d0"/>
-        <rect x="14" y="40" width="82" height="52" fill="#14213d"/><rect x="40" y="38" width="30" height="5" fill="#f6f1e6"/>
-        <path d="M44 12 h22 v26 h-22z" fill="#fff" stroke="#14213d" stroke-width="2"/><path d="M48 25 l5 6 9 -12" stroke="#a4161a" stroke-width="4" fill="none"/>
-        <text x="55" y="74" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="18" fill="#f6f1e6">98%+</text>
+      <svg class="art" viewBox="0 0 84 96" preserveAspectRatio="xMidYMid slice">
+        <rect width="84" height="96" fill="#14213d"/>
+        <text x="42" y="58" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="24" fill="#f6f1e6">98%</text>
       </svg>
       <span class="tag">4</span><span class="badge">REPORTED</span>
       <div class="txt">
@@ -149,10 +141,10 @@
       </div>
     </div>
     <div class="card wide">
-      <svg class="art" viewBox="0 0 110 96" preserveAspectRatio="xMidYMid slice">
-        <rect width="110" height="96" fill="#2a4d8f"/><rect y="62" width="110" height="34" fill="#1f3c73"/>
-        <g transform="translate(40 42) rotate(-30)"><ellipse cx="0" cy="-10" rx="14" ry="18" fill="none" stroke="#f6f1e6" stroke-width="4"/><rect x="-3" y="8" width="6" height="24" fill="#f6f1e6"/></g>
-        <circle cx="80" cy="24" r="8" fill="#d9f04c"/><path d="M70 58 h24 l-4 14 h-16z M76 72 h12 v8 h-12z M72 80 h20 v5 h-20z" fill="#f4d35e"/>
+      <svg class="art" viewBox="0 0 84 96" preserveAspectRatio="xMidYMid slice">
+        <rect width="84" height="96" fill="#2a4d8f"/>
+        <g transform="translate(36 50) rotate(-30)"><ellipse cx="0" cy="-10" rx="14" ry="18" fill="none" stroke="#f6f1e6" stroke-width="4"/><rect x="-3" y="8" width="6" height="22" fill="#f6f1e6"/></g>
+        <circle cx="62" cy="26" r="8" fill="#d9f04c"/>
       </svg>
       <span class="tag">5</span><span class="badge">REPORTED</span>
       <div class="txt">
@@ -167,11 +159,11 @@
   <div class="sec-h"><b>Also on Sunday 22 November</b><span>politics and power</span></div>
   <div class="mid">
     <div class="m me"><i>ISRAEL</i><b>Netanyahu–Eisenkot coalition talks end without a deal</b><span>Four-hour Likud–Yashar round in Herzliya</span><em>Haaretz · Japan Times</em></div>
-    <div class="m me"><i>IRAN</i><b>Rolling power cuts begin as plants run short of fuel</b><span>Grid operator Tavanir starts outages</span><em>RFE/RL · Shafaq News</em></div>
+    <div class="m me"><i>IRAN</i><b>Rolling power cuts begin as plants run short of fuel</b><em>RFE/RL · Shafaq News</em></div>
     <div class="m am"><i>COLOMBIA</i><b>ICT ministry asks X to suspend ex-president Petro's account</b><span>De la Espriella government cites "possible incitement to violence"</span><em>El Tiempo · CNN en Español</em></div>
     <div class="m as"><i>SOUTH KOREA</i><b>Education minister quits over AI exam-cheating chaos</b><span>President Lee accepts resignation</span><em>France 24 · JoongAng Daily</em></div>
     <div class="m as"><i>NEPAL · INDIA</i><b>PM Balendra Shah lands in Delhi on first foreign trip</b><span>Two-day state visit begins</span><em>Outlook · Open</em></div>
-    <div class="m as"><i>AUSTRALIA</i><b>Marles says US budget office is wrong on AUKUS subs</b><span>Rejects CBO warning on US fleet</span><em>Reuters · Japan Times</em></div>
+    <div class="m as"><i>AUSTRALIA</i><b>Marles says US budget office is wrong on AUKUS subs</b><em>Reuters · Japan Times</em></div>
   </div>
 
   <div class="list">
@@ -186,8 +178,7 @@
     <div class="it"><i class="wd">MARKETS</i><b>Bitcoin back above $60,000 after slump</b> <em>Yahoo Finance · crypto.news</em></div>
   </div>
 
-  <div class="check"><b class="t">DATE CHECK</b>Left out as earlier news: Iran's strike on a Bahrain industrial site (late Sat 21) · "El Chapo Isidro" captured in Sinaloa, 11 dead (Sat 21) · Indonesia candy-factory fire (Sat 21) · Kryvyi Rih missile strike, Nigeria funeral-boat capsizing (Fri 20) · Somalia expels UAE envoy (Thu 19).</div>
-  <div class="srcs">Sources: CNN · CBS · NPR · Ukrainian Air Force · Ukrinform · NBC News · CBC · AP · The Standard · LegCo · ATP · Sky Sports · Al Jazeera · Haaretz · RFE/RL · El Tiempo · France 24 · Reuters · AFP · ESPN · F1 · Bernama · NRO · Vatican News · IOL · Yahoo Finance. Pictures drawn in code; no photographs.</div>
-  <div class="foot"><span><span class="k">REPORTED</span> carried by two or more outlets on 22 Nov · times in UTC</span><span>SUNDAY 22 NOVEMBER 2026 · ONE PAGE</span></div>
+  <div class="check"><b class="t">DATE CHECK · LEFT OUT, EARLIER DAYS</b>Sat 21: Iran strike on Bahrain site · "El Chapo Isidro" captured, 11 dead · Indonesia factory fire &nbsp;|&nbsp; Fri 20: Kryvyi Rih strike · Nigeria boat capsizing &nbsp;|&nbsp; Thu 19: Somalia expels UAE envoy</div>
+  <div class="foot"><span><span class="k">REPORTED</span> carried by two or more outlets on 22 Nov · times in UTC · pictures drawn in code</span><span>SUNDAY 22 NOVEMBER 2026 · ONE PAGE</span></div>
 </body>
 </html>
